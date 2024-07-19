@@ -1,0 +1,23 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+
+<!-- branding is the one used on the admin dashboard
+This block is to change the django admin panel logo 
+-->
+
+{% block branding %}
+<h1 id="head">
+    <!-- links to the admin home-->
+    <a href="/admin"><img src="{% static 'img/logos/black-logo.png' %}" alt="" class="brand_img" height="50"
+            width="300"></a>
+
+</h1>
+
+{% endblock %}
+
+<!-- This is to change the background color-->
+{% block extrastyle %}
+
+<link rel="stylesheet" href="{% static 'css/admin.css' %}">
+
+{% endblock %}

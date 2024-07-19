@@ -9860,18 +9860,13 @@ textarea::-webkit-input-placeholder {
     color: #f0151f;
 }
 
-
-a.nav-link.active {
-    color: #f0151f !important;
-}
-
-.tabbing-box .nav-tabs .nav-item.show .nav-link,
-.nav-tabs .nav-link.active {
-    color: #fff !important;
-}
-
-
 /* changes the active menu option link*/
 a.nav-link.active {
     color: #f0151f !important;
+}
+
+/* changes the color of the single_page tab buttons*/
+.tabbing-box .nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    color: #fff !important;
 }
