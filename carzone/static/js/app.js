@@ -477,3 +477,9 @@ $(function () {
         }
     }).trigger("resize");
 })(jQuery);
+
+//time-controlled function (4 ms) for customized messages
+setTimeout(function () {
+    $('#message').fadeOut('slow');
+
+}, 4000)
