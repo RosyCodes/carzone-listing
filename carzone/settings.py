@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'contacts.apps.ContactsConfig',
     'accounts.apps.AccountsConfig',
     'cars.apps.CarsConfig',
     'pages.apps.PagesConfig',
@@ -43,16 +44,16 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ckeditor',
     'django.contrib.humanize',
-    'django.contrib.sites',
-
     # for social media logins
+    'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-
-    # social media providers
+    # # social media providers
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.linkedin_oauth2',
+
 ]
 
 MIDDLEWARE = [
@@ -63,7 +64,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
+    # allauth account middleware for social login
+    'allauth.account.middleware.AccountMiddleware',
 
 ]
 
@@ -72,6 +74,7 @@ ROOT_URLCONF = 'carzone.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        # this is the folder in the root or base directory for our web pages
         'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -158,3 +161,24 @@ MESSAGE_TAGS = {
 
 # SOCIAL MEDIA CONFIGURATION
 SITE_ID = 1
+
+# redirects to the dashboard after social media login
+LOGIN_REDIRECT_URL = 'dashboard'
+# AUTHENTICATION_BACKENDS = [
+#     'django.contrib.auth.backends.ModelBackend',
+#     'allauth.account.auth_backends.AuthenticationBackend',
+# ]
+
+SOCIALACCOUNT_PROVIDERS = {
+
+}
+
+# EMAIL CONFIGURATION
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Email Setup
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'rosy61625@gmail.com'
+EMAIL_HOST_PASSWORD = 'xmkamjunbsjvvipt'
+EMAIL_USE_TLS = True
