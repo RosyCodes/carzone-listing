@@ -7,6 +7,8 @@
 
 
 {% load socialaccount %}
+
+<!-- for facebook login-->
 {% providers_media_js %}
 
 <!-- Sub Banner starts -->
@@ -75,13 +77,11 @@
                         </div>
                         <div class="clearfix"></div>
                         <ul class="social-list">
-                            <li><a href="#" class="facebook-bg"><i
+                            <li><a href="{% provider_login_url 'facebook' method='oauth2' %}" class="facebook-bg"><i
                                         class="fa fa-facebook facebook-i"></i><span>Facebook</span></a></li>
                             <li><a href="{% provider_login_url 'google' %}" class="google-bg"><i
                                         class="fa fa-google google-i"></i><span>Google</span></a></li>
-                            <li><a href="#" class="linkedin-bg"><i
-                                        class="fab fa-linkedin-in"></i><span>LinkedIn</span></a>
-                            </li>
+
 
                         </ul>
                     </form>
