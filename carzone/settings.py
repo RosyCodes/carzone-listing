@@ -190,10 +190,9 @@ EMAIL_HOST_PASSWORD = 'xmkamjunbsjvvipt'
 EMAIL_USE_TLS = True
 
 # Whitenoise Configuration for HEROKU deployment
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 STORAGES = {
     # ...
-    'static': {
+    'staticfiles': {
         'BACKEND': 'whitenoise.storage.CompressedStaticFilesStorage',
     },
 }
