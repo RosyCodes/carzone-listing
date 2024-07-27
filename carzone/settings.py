@@ -74,6 +74,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # allauth account middleware for social login
     'allauth.account.middleware.AccountMiddleware',
+    # for HEROKU deployment
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 
 ]
 
@@ -194,3 +196,6 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'rosy61625@gmail.com'
 EMAIL_HOST_PASSWORD = 'xmkamjunbsjvvipt'
 EMAIL_USE_TLS = True
+
+# Whitenoise Configuration for HEROKU deployment
+STATICFILES_STORAGE = 'whitenoise.storage.CompressManifestStaticFilesStorage'
