@@ -192,5 +192,3 @@ EMAIL_USE_TLS = True
 # Whitenoise Configuration for HEROKU deployment
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 django_heroku.settings(locals())
-
-# WHITENOISE_MANIFEST_STRICT = False
