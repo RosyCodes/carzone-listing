@@ -15,6 +15,7 @@ import os
 
 # we add this block for HERUKU deployment
 import dj_database_url
+import django_heroku
 # from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -190,3 +191,4 @@ EMAIL_USE_TLS = True
 
 # Whitenoise Configuration for HEROKU deployment
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+django_heroku.settings(locals())
