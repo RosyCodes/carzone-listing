@@ -109,7 +109,7 @@ WSGI_APPLICATION = 'carzone.wsgi.application'
 # # we add this block for HERUKU deployment
 # DATABASE_URL is in our ENV file
 DATABASES = {'default': dj_database_url.config(
-    default='postgres://postgres:adminRosy:5434@localhost/carzone_db')}
+    default='postgres://postgres:adminRosy@localhost/carzone_db')}
 
 
 # Password validation
