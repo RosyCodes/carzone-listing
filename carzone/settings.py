@@ -31,7 +31,7 @@ SECRET_KEY = '79wc33dl6fo^co%2d%@2@vq%a6k8_5er=@(vxi=383!g%$re$u'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [*]
+ALLOWED_HOSTS = ['*']
 
 # redirects to the dashboard after verified social media login
 LOGIN_REDIRECT_URL = 'dashboard'
