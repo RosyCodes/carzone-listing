@@ -15,7 +15,7 @@ import os
 
 # we add this block for HERUKU deployment
 import dj_database_url
-#from decouple import config
+# from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -108,7 +108,8 @@ WSGI_APPLICATION = 'carzone.wsgi.application'
 
 # # we add this block for HERUKU deployment
 # DATABASE_URL is in our ENV file
-DATABASES = {'default': dj_database_url.config(default=postgres://postgres:adminRosy:5434@localhost/carzone_db)}
+DATABASES = {'default': dj_database_url.config(
+    default='postgres://postgres:adminRosy:5434@localhost/carzone_db')}
 
 
 # Password validation
