@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 from django.contrib.messages import constants as messages
 import os
 
+# we add this block for HERUKU deployment
+import dj_database_url
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -24,10 +27,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '79wc33dl6fo^co%2d%@2@vq%a6k8_5er=@(vxi=383!g%$re$u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
+# redirects to the dashboard after verified social media login
+LOGIN_REDIRECT_URL = 'dashboard'
+
+# immediately redirects to the social media login page
+SOCIALACCOUNT_LOGIN_ON_GET = True
 
 # Application definition
 
@@ -94,15 +102,20 @@ WSGI_APPLICATION = 'carzone.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'carzone_db',
-        'USER': 'postgres',
-        'PASSWORD': 'adminRosy',
-        'HOST': 'localhost',
-    }
-}
+# We remove this block for HEROKU deployment
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': 'carzone_db',
+#         'USER': 'postgres',
+#         'PASSWORD': 'adminRosy',
+#         'HOST': 'localhost',
+#     }
+# }
+
+# # we add this block for HERUKU deployment
+DATABASES = {'default': dj_database_url.config(
+    default='postgres://postgres:adminRosy@localhost/carzone_db')}
 
 
 # Password validation
@@ -162,8 +175,7 @@ MESSAGE_TAGS = {
 # SOCIAL MEDIA CONFIGURATION
 SITE_ID = 1
 
-# redirects to the dashboard after social media login
-LOGIN_REDIRECT_URL = 'dashboard'
+
 # AUTHENTICATION_BACKENDS = [
 #     'django.contrib.auth.backends.ModelBackend',
 #     'allauth.account.auth_backends.AuthenticationBackend',
