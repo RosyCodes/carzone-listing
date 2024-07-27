@@ -191,6 +191,10 @@ EMAIL_USE_TLS = True
 
 # Whitenoise Configuration for HEROKU deployment
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
-
+STORAGES = {
+    # ...
+    'static': {
+        'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+    },
+}
 django_heroku.settings(locals())
