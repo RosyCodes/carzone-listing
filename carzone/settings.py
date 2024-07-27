@@ -15,6 +15,7 @@ import os
 
 # we add this block for HERUKU deployment
 import dj_database_url
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '79wc33dl6fo^co%2d%@2@vq%a6k8_5er=@(vxi=383!g%$re$u'
+SECRET_KEY = config(MY_SECRET_KEY)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -104,20 +105,11 @@ WSGI_APPLICATION = 'carzone.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# We remove this block for HEROKU deployment
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': 'carzone_db',
-#         'USER': 'postgres',
-#         'PASSWORD': 'adminRosy',
-#         'HOST': 'localhost',
-#     }
-# }
 
 # # we add this block for HERUKU deployment
+# DATABASE_URL is in our ENV file
 DATABASES = {'default': dj_database_url.config(
-    default='postgres://postgres:adminRosy@localhost/carzone_db')}
+    default=config('DATABASE_URL'))}
 
 
 # Password validation
@@ -193,8 +185,8 @@ SOCIALACCOUNT_PROVIDERS = {
 # Email Setup
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'rosy61625@gmail.com'
-EMAIL_HOST_PASSWORD = 'xmkamjunbsjvvipt'
+EMAIL_HOST_USER = config('MY_EMAIL')
+EMAIL_HOST_PASSWORD = config('MY_PASSWORD')
 EMAIL_USE_TLS = True
 
 # Whitenoise Configuration for HEROKU deployment
