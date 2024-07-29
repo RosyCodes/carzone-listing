@@ -68,6 +68,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # for HEROKU deployment
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -76,8 +78,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # allauth account middleware for social login
     'allauth.account.middleware.AccountMiddleware',
-    # for HEROKU deployment
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+
 
 ]
 
@@ -190,7 +191,8 @@ EMAIL_HOST_PASSWORD = 'xmkamjunbsjvvipt'
 EMAIL_USE_TLS = True
 
 # Whitenoise Configuration for HEROKU deployment
-STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+WHITENOISE_SKIP_MISSING_FILES = True
 
 
 django_heroku.settings(locals())
