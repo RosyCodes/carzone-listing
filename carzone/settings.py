@@ -11,11 +11,12 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 from django.contrib.messages import constants as messages
-import os
 
+import os
 # we add this block for HERUKU deployment
-import dj_database_url
 import django_heroku
+import dj_database_url
+
 # from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -29,9 +30,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '79wc33dl6fo^co%2d%@2@vq%a6k8_5er=@(vxi=383!g%$re$u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 # redirects to the dashboard after verified social media login
 LOGIN_REDIRECT_URL = 'dashboard'
@@ -108,10 +109,22 @@ WSGI_APPLICATION = 'carzone.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 
-# # we add this block for HERUKU deployment
-# DATABASE_URL is in our ENV file
+# local computer's database configuration
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'carzone_db',
+#         'USER': 'postgres',
+#         'PASSWORD': 'adminRosy',
+#         'HOST': 'localhost',
+#     }
+# }
+
+# we add this block for HERUKU deployment
+
 DATABASES = {'default': dj_database_url.config(
     default='postgres://postgres:adminRosy@localhost:5434/carzone_db')}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -152,7 +165,9 @@ USE_TZ = True
 
 # STATIC FILE CONFIGURATON
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# creates this new folder and copies all the static files TO this new folder  after COLLECTSTATIC is issued
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# this is where our static files are copied FROM
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'carzone/static'),
 ]
