@@ -121,10 +121,13 @@ WSGI_APPLICATION = 'carzone.wsgi.application'
 # }
 
 # we add this block for HERUKU deployment
+# DATABASES = {'default': dj_database_url.config(
+#     default='postgres://postgres:adminRosy@localhost:5434/carzone_db')}
 
+# HEROKU CREDENTIALS AND USE OF ENVIRONMENT VARIABLES PROVIDED
 DATABASES = {'default': dj_database_url.config(
-    default='postgres://postgres:adminRosy@localhost:5434/carzone_db')}
-
+    default='postgres: // uacp2joia9miv5: pfdb946d08413449c74196a586d2757b3a0366f1cd746406af51e9f57efd69ada@c8lj070d5ubs83.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com: 5432/d44bqh6timinvv
+    ')}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
