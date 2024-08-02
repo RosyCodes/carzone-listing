@@ -204,8 +204,8 @@ SOCIALACCOUNT_PROVIDERS = {
 # Email Setup
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'MY_EMAIL@gmail.com'
-EMAIL_HOST_PASSWORD = 'MY_PASSWORD'
+EMAIL_HOST_USER = 'rosy61625@gmail.com'
+EMAIL_HOST_PASSWORD = 'xmkamjunbsjvvipt'
 EMAIL_USE_TLS = True
 
 # Whitenoise Configuration for HEROKU deployment
