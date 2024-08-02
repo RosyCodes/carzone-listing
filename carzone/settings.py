@@ -30,7 +30,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '79wc33dl6fo^co%2d%@2@vq%a6k8_5er=@(vxi=383!g%$re$u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # Ccustomize this to add for your Heroku's default domain, and your puchased domain name
 ALLOWED_HOSTS = ['lit-cliffs-98316-70180276948a.herokuapp.com',]
