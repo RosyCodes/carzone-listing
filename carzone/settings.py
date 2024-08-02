@@ -186,8 +186,8 @@ MESSAGE_TAGS = {
 }
 
 # SOCIAL MEDIA CONFIGURATION
-SITE_ID = 1
-
+# SITE_ID = 1 # localhost ID
+SITE_ID = 3  # heroku's current app URL
 
 # AUTHENTICATION_BACKENDS = [
 #     'django.contrib.auth.backends.ModelBackend',
