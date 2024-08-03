@@ -16,8 +16,11 @@ import os
 # we add this block for HERUKU deployment
 import django_heroku
 import dj_database_url
+# calls environment variables for sensitve data
+from dotenv import load_dotenv
 
-# from decouple import config
+# Load environment variables from .env file
+load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,7 +30,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '79wc33dl6fo^co%2d%@2@vq%a6k8_5er=@(vxi=383!g%$re$u'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -110,24 +113,10 @@ WSGI_APPLICATION = 'carzone.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 
-# local computer's database configuration
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'carzone_db',
-#         'USER': 'postgres',
-#         'PASSWORD': 'adminRosy',
-#         'HOST': 'localhost',
-#     }
-# }
-
-# we add this block for HERUKU deployment
-# DATABASES = {'default': dj_database_url.config(
-#     default='postgres://postgres:adminRosy@localhost:5434/carzone_db')}
-
 # HEROKU CREDENTIALS AND USE OF ENVIRONMENT VARIABLES PROVIDED
 DATABASES = {'default': dj_database_url.config(
-    default='postgres://uacp2joia9miv5:pfdb946d08413449c74196a586d2757b3a0366f1cd746406af51e9f57efd69ada@c8lj070d5ubs83.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d44bqh6timinvv')}
+    default=os.getenv('DATABASE_URL'))}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -204,8 +193,8 @@ SOCIALACCOUNT_PROVIDERS = {
 # Email Setup
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'rosy61625@gmail.com'
-EMAIL_HOST_PASSWORD = 'xmkamjunbsjvvipt'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
 
 # Whitenoise Configuration for HEROKU deployment
